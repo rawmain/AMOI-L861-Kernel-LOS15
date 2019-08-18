@@ -1780,6 +1780,7 @@ void smi_dumpDebugMsg(void)
 		smi_dumpLarbDebugMsg(u4Index);
 }
 
+#ifdef CONFIG_MTK_SMI_EXT
 int smi_debug_bus_hanging_detect_ext(unsigned int larbs, int show_dump, int output_gce_buffer)
 {
 	SMIMSG("Not support to write log into CMDQ error dumping messages\n");
@@ -1913,6 +1914,8 @@ int smi_debug_bus_hanging_detect(unsigned int larbs, int show_dump)
 
 	return is_smi_issue;
 }
+
+#endif
 
 void smi_client_status_change_notify(int module, int mode)
 {

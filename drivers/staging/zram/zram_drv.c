@@ -502,18 +502,22 @@ static void zram_free_page(struct zram *zram, size_t index)
 	if(ret == 0)	
 	{
 		zs_free(meta->mem_pool, handle);
+		if (size <= PAGE_SIZE / 2)
+			zram->stats.good_compress--;
+        		zram_stat64_sub(zram, &zram->stats.compr_size,
+					meta->table[index].size);
+		zram->stats.pages_stored--;
 	}
 
 #else
 	zs_free(meta->mem_pool, handle);
-#endif
 	if (size <= PAGE_SIZE / 2)
 		zram->stats.good_compress--;
 
 	zram_stat64_sub(zram, &zram->stats.compr_size,
 			meta->table[index].size);
 	zram->stats.pages_stored--;
-
+#endif
 	meta->table[index].handle = 0;
 	meta->table[index].size = 0;
 }

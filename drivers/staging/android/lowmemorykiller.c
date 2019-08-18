@@ -449,8 +449,8 @@ log_again:
 				ion_mm_heap_memory_detail();
 			#endif
 			#ifdef CONFIG_MTK_GPU_SUPPORT
-				//if (mtk_dump_gpu_memory_usage() == false)
-					//lowmem_print(1, "mtk_dump_gpu_memory_usage not support\n");
+				if (mtk_dump_gpu_memory_usage() == false)
+					lowmem_print(1, "mtk_dump_gpu_memory_usage not support\n");
 			#endif
 			}
 		}

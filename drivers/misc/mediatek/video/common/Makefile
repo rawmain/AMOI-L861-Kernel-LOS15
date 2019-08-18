@@ -42,10 +42,11 @@ endif
 #####################################
 # Common Source files for all chips
 obj-$(CONFIG_MTK_FB) += 			\
-				data_rgb888_64x64.o		\
-				data_rgb888_64x64_golden.o \
 				mtkfb_fence.o \
 				ddp_color_format.o
+#				data_rgb888_64x64.o		\
+#				data_rgb888_64x64_golden.o \
+
 
 ifeq (y, $(CONFIG_ARCH_MT6752))
 obj-$(CONFIG_MTK_FB) += mtkfb.o
